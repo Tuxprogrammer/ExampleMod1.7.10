@@ -17,6 +17,7 @@ An example mod for Minecraft 1.7.10 with Forge focussed on a stable, updatable s
     * [Forge's Access Transformers](#forges-access-transformers)
     * [Mixins](#mixins)
     * [Advanced](#advanced)
+    * [Claude Code skills](#claude-code-skills)
     * [Feedback wanted](#feedback-wanted)
 
 
@@ -100,6 +101,16 @@ The extra required dependencies are handled automatically after mixins are enabl
 If your project requires custom gradle commands you may add a `addon.gradle[.kts]` to your project. It will be added automatically to the build script. Although we recommend against it, it is sometimes required. When in doubt, feel free to ask us about it. You may break future updates of this build system!
 If you need access to properties modified later in the buildscript, you can also use a `addon.late.gradle[.kts]`.
 For local tweaks that you don't want to commit to Git, like adding extra JVM arguments for testing, use `addon[.late].local.gradle[.kts]`.
+
+### Claude Code skills
+
+This fork adds [Claude Code](https://claude.com/claude-code) guidance for porting, reverse-engineering or rebuilding an existing mod so that it fits GT New Horizons:
+
+- [`CLAUDE.md`](CLAUDE.md): a short map of non-negotiables and where to look.
+- [`.claude/skills/`](.claude/skills/): twelve focused skills that Claude Code loads when a task matches: clean-room reimplementation and license triage, writing a behavior spec with a bugs-not-to-reproduce register, source-first GTNH integration research, GT-first design (materials, recipe maps, tiers, EU, multiblocks), config-safe registration, testing (unit, static, headless, scenario, real-pack, worldgen, client), rendering under shaders and Angelica, networking and side safety, delivering content into the pack from the jar, releases and public-repo hygiene, a gated workflow for large ports, and checking a pack's contribution policies.
+- [`docs/templates/`](docs/templates/): skeletons the skills refer to (decision record, roadmap, spec area and sheet, bug register, pack-changes list, PR checklist).
+
+These files contain no code and do not change the build. The skills were written with Claude (an AI model), distilled from lessons learned on a large GTNH port. Read them critically and adapt them to your project; check each rule against the current pack and buildscript before relying on it.
 
 ### Feedback wanted
 
